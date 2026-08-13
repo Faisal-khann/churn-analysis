@@ -1,4 +1,4 @@
-# ChurnLens: Architecture & Environment Configuration
+# Architecture & Environment Configuration
 
 This document outlines the infrastructure naming conventions, storage buckets, database catalog setup, and dataset flow for the **ChurnLens** AWS pipeline.
 
