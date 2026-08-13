@@ -12,8 +12,8 @@ An end-to-end enterprise data analytics solution designed using the **Medallion 
 ## 📌 Table of Contents
 - [Overview](#overview)
 - [Target Audience](#who-is-the-target-audience)
-- [Tech Stack](#️tech-stack)
-- [Architecture & Data Pipeline Flow](#️architecture-and-data-pipeline-flow)
+- [Tech Stack Used](#tech-stack-used)
+- [Architecture & Data Pipeline Flow](architecture-and-data-pipeline-flow)
 - [Medallion Architecture Setup](#medallion-architecture-setup)
   - [1. Storage Layer (Amazon S3)](#1-storage-layer-amazon-s3)
   - [2. Metadata & Processing (AWS Glue & Athena)](#2-metadata--processing-aws-glue--athena)
@@ -31,7 +31,7 @@ An end-to-end enterprise data analytics solution designed using the **Medallion 
 <p>Although this project focuses on churn analysis for a telecom firm, the techniques and insights are applicable across various industries. From retail and finance to healthcare and beyond, any business that values customer retention can benefit from churn analysis. We will explore the methods, tools, and best practices for reducing churn and improving customer loyalty, transforming data into actionable insights for sustained success.</p>
 ---
 
-## Tech Stack
+## Tech Stack Used
 
 | Category | Tools |
 |---|---|
