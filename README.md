@@ -13,7 +13,6 @@ An end-to-end enterprise data analytics solution designed using the **Medallion 
 - [Overview](#overview)
 - [Target Audience](#who-is-the-target-audience)
 - [Tech Stack Used](#tech-stack-used)
-- [Architecture & Data Pipeline Flow](architecture-data-pipeline-flow)
 - [Medallion Architecture Setup](#medallion-architecture-setup)
   - [1. Storage Layer (Amazon S3)](#1-storage-layer-amazon-s3)
   - [2. Metadata & Processing (AWS Glue & Athena)](#2-metadata--processing-aws-glue--athena)
@@ -59,6 +58,7 @@ An end-to-end enterprise data analytics solution designed using the **Medallion 
         ▼
 [ Athena Gold Views ] ──► [ Simba ODBC Driver ] ──► [ Power BI Dashboard ]
 ```
+<img width="1133" height="563" alt="Image" src="https://github.com/user-attachments/assets/d929afa2-8842-461f-abd4-183ea0deafd4" />
 
 ---
 
