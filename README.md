@@ -9,12 +9,40 @@ An end-to-end enterprise data analytics solution designed using the **Medallion 
 
 ---
 
+## 📌 Table of Contents
+- [Overview](#-overview)
+- [Target Audience](#-target-audience)
+- [Tech Stack Used](#️-tech-stack-used)
+- [Architecture & Data Pipeline Flow](#️-architecture--data-pipeline-flow)
+- [Medallion Architecture Setup](#-medallion-architecture-setup)
+  - [1. Storage Layer (Amazon S3)](#1--storage-layer-amazon-s3)
+  - [2. Metadata & Processing (AWS Glue & Athena)](#2--metadata--processing-aws-glue--athena)
+- [Power BI Dashboard Visuals](#️-power-bi-dashboard-visuals)
+  - [Page 1: Executive Churn Overview](#page-1-executive-churn-overview)
+  - [Page 2: Service & Root Cause Analysis](#page-2-service--root-cause-analysis)
+- [How to Run / Reproduce](#-how-to-run--reproduce)
+
+---
+
 ## Overview
 <Em> In today’s competitive business environment, retaining customers is crucial for long-term success. Churn analysis is a key technique used to understand and reduce this customer attrition. It involves examining customer data to identify patterns and reasons behind customer departures. By using advanced data analytics and machine learning, businesses can predict which customers are at risk of leaving and understand the factors driving their decisions. This knowledge allows companies to take proactive steps to improve customer satisfaction and loyalty.</em>
 
 ## Who is the Target Audience
 <p>Although this project focuses on churn analysis for a telecom firm, the techniques and insights are applicable across various industries. From retail and finance to healthcare and beyond, any business that values customer retention can benefit from churn analysis. We will explore the methods, tools, and best practices for reducing churn and improving customer loyalty, transforming data into actionable insights for sustained success.</p>
 ---
+
+## Tech Stack Used
+
+| Category | Tools |
+|---|---|
+| **Cloud Services** | AWS S3, AWS Glue Crawler, AWS Glue Data Catalog, Amazon Athena |
+| **Query Language** | SQL (Athena DDL/DML, CTAS queries) |
+| **Data Storage Formats** | CSV, Snappy-Compressed Parquet |
+| **BI & Integration** | Power BI Desktop, Simba Athena ODBC Driver, DAX |
+| **Documentation & Modeling** | Medallion Lakehouse Architecture |
+
+---
+
 
 ## Architecture & Data Pipeline Flow
 
@@ -52,47 +80,18 @@ An end-to-end enterprise data analytics solution designed using the **Medallion 
 
 ---
 
-## Key DAX Measures & Formulas
-
-Below are the core DAX measures created in Power BI for executive reporting:
-
-```dax
--- 1. Total Customers
-Total Customers = COUNT(gold_v_customer_churn[customer_id])
-
--- 2. Churned Customers
-Churned Customers = SUM(gold_v_customer_churn[churn_flag])
-
--- 3. Overall Churn Rate (%)
-Churn Rate % = AVERAGE(gold_v_customer_churn[churn_flag])
-
--- 4. Churn Revenue Loss ($)
-Churn Revenue Loss = 
-CALCULATE(
-    SUM(gold_v_customer_churn[total_charges]), 
-    gold_v_customer_churn[churn_flag] = 1
-)
-
--- 5. Fiber Optic Churn %
-Fiber Optic Churn % = 
-CALCULATE(
-    AVERAGE(gold_v_customer_churn[churn_flag]),
-    gold_v_customer_churn[internet_type] = "Fiber Optic"
-)
-```
-
----
-
 ## Power BI Dashboard Visuals
 
 The dashboard is structured into 2 analytical pages to separate executive strategy from operational root-cause analysis.
 
 ### Page 1: Executive Churn Overview
 
-- **Top KPIs:** Total Customers (6,418), Active Customers (4,686), Churned Customers (1,732), Churn Rate (27.0%), Revenue Loss ($2.66M).
+- **Top KPIs:** Total Customers (6,418), Active Customers (4,686), Churned Customers (1,732), Churn Rate (27.0%), Revenue Loss (2.66M).
 - **Contract Risk:** Month-to-Month contracts account for 46.5% of churn.
 - **Tenure Risk:** Customers in the `< 6 Months` and `>= 24 Months` groups show specific tenure drop-off behavior.
 - **Demographics:** Age groups > 50 have the highest churn rate at 31.0%.
+
+<img width="1405" height="786" alt="Image" src="https://github.com/user-attachments/assets/c8fddf28-69d2-4a6b-a6d1-a75b8f1784ef" />
 
 ### Page 2: Service & Root Cause Analysis
 
@@ -100,17 +99,7 @@ The dashboard is structured into 2 analytical pages to separate executive strate
 - **Tech Vulnerability:** Fiber Optic accounts for 65.59% of all churned internet subscribers.
 - **Geographic Hotspots:** States like Jammu & Kashmir (57.2%) and Assam (38.1%) represent critical high-churn regions.
 
----
-
-## Tech Stack Used
-
-| Category | Tools |
-|---|---|
-| **Cloud Services** | AWS S3, AWS Glue Crawler, AWS Glue Data Catalog, Amazon Athena |
-| **Query Language** | SQL (Athena DDL/DML, CTAS queries) |
-| **Data Storage Formats** | CSV, Snappy-Compressed Parquet |
-| **BI & Integration** | Power BI Desktop, Simba Athena ODBC Driver, DAX |
-| **Documentation & Modeling** | Medallion Lakehouse Architecture |
+<img width="1400" height="787" alt="Image" src="https://github.com/user-attachments/assets/46995416-9f02-4ce0-ad23-b1f78ab67def" />
 
 ---
 
